@@ -3,6 +3,7 @@ import { TodoList } from "./components/TodoList/TodoList";
 import { AddTodo } from "./components/AddTodo/AddTodo";
 import { useSelector } from "react-redux";
 import { KEY } from "./constants";
+import { Title } from "./components/Title/Title";
 
 export function App() {
   const todos = useSelector((state) => state.todos);
@@ -13,6 +14,7 @@ export function App() {
 
   return (
     <>
+      <Title />
       <AddTodo />
       <TodoList todos={todos} />
       <div>{todos.filter((todo) => !todo.completed).length} tasks left</div>

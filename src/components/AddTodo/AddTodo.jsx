@@ -28,7 +28,6 @@ export function AddTodo() {
 
   return (
     <div>
-      <h1>Todo List</h1>
       <input
         value={input}
         onChange={handleInputChange}

@@ -4,6 +4,7 @@ import {
   TOGGLE_TODO,
   SET_FILTER,
   EDIT_TODO,
+  RESET_LIST,
 } from "./actionTypes";
 import { v4 as uuidv4 } from "uuid";
 
@@ -38,4 +39,8 @@ export const toggleTodo = (id) => ({
 export const setFilter = (filter) => ({
   type: SET_FILTER,
   payload: { filter },
+});
+
+export const resetList = () => ({
+  type: RESET_LIST,
 });

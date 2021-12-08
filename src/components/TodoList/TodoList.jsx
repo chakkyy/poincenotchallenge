@@ -8,7 +8,7 @@ export function TodoList({ todos }) {
     <>
       <button onClick={() => setSort("all")}>All</button>
       <button onClick={() => setSort("completed")}>Completed</button>
-      <button onClick={() => setSort("uncompleted")}>Incompleted</button>
+      <button onClick={() => setSort("uncompleted")}>Uncompleted</button>
       <ul>
         {/* for uncompleted items */}
         {todos.length > 0 && sort === "uncompleted"

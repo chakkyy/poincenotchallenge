@@ -3,6 +3,7 @@ import {
   EDIT_TODO,
   TOGGLE_TODO,
   REMOVE_TODO,
+  RESET_LIST,
 } from "../actions/actionTypes";
 import { KEY } from "../../constants";
 
@@ -33,6 +34,12 @@ export const todoApp = (state = initialState, action) => {
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== id),
+      };
+    }
+    case RESET_LIST: {
+      return {
+        ...state,
+        todos: [],
       };
     }
     case TOGGLE_TODO: {
