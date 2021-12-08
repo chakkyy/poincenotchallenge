@@ -1,6 +1,6 @@
 import {
   ADD_TODO,
-  EDIT_TODO,
+  UPDATE_TODO,
   TOGGLE_TODO,
   REMOVE_TODO,
   RESET_LIST,
@@ -23,10 +23,13 @@ export const todoApp = (state = initialState, action) => {
         todos: [...state.todos, { id, text, completed: false }],
       };
     }
-    case EDIT_TODO: {
+    case UPDATE_TODO: {
+      const { id, text } = action.payload;
       return {
         ...state,
-        isEditing: !state.isEditing,
+        todos: state.todos.map((todo) =>
+          todo.id === id ? { ...todo, text } : todo
+        ),
       };
     }
     case REMOVE_TODO: {

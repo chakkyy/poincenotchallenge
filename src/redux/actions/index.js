@@ -3,7 +3,7 @@ import {
   REMOVE_TODO,
   TOGGLE_TODO,
   SET_FILTER,
-  EDIT_TODO,
+  UPDATE_TODO,
   RESET_LIST,
 } from "./actionTypes";
 import { v4 as uuidv4 } from "uuid";
@@ -24,10 +24,11 @@ export const removeTodo = (id) => ({
   },
 });
 
-export const editTodo = (payload) => ({
-  type: EDIT_TODO,
+export const updateTodo = (id, item) => ({
+  type: UPDATE_TODO,
   payload: {
-    payload,
+    id: id,
+    item: item,
   },
 });
 
