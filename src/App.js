@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { KEY } from "./constants";
 
 export function App() {
-  const todos = useSelector((state) => state.todos.todos);
+  const todos = useSelector((state) => state.todos);
 
   useEffect(() => {
     localStorage.setItem(KEY, JSON.stringify(todos));

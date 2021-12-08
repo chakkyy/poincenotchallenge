@@ -1,5 +1,5 @@
 import React from "react";
-import { toggleTodo, removeTodo } from "../../redux/actions";
+import { toggleTodo, removeTodo, editTodo } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 export function TodoItem({ todo }) {
@@ -15,8 +15,8 @@ export function TodoItem({ todo }) {
     dispatch(removeTodo(todo.id));
   };
 
-  const editTodo = () => {
-    //this function edit the name of the todo
+  const handleEditClick = () => {
+    dispatch(editTodo(true));
   };
 
   return (
