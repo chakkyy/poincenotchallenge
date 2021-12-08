@@ -1,59 +1,21 @@
-import React, { Fragment, useState, useRef, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { useEffect, useState } from "react";
 import { TodoList } from "./components/TodoList/TodoList";
-
-const KEY = "todoApp.todos";
+import { AddTodo } from "./components/AddTodo/AddTodo";
+import { useSelector } from "react-redux";
+import { KEY } from "./constants";
 
 export function App() {
-  const todoTaskRef = useRef();
-  const [todos, setTodos] = useState([]);
-
-  //no perder lista todos cuando refresca pagina
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem(KEY));
-    if (storedTodos) {
-      setTodos(storedTodos);
-    }
-  }, []);
+  const todos = useSelector((state) => state.todos.todos);
 
   useEffect(() => {
     localStorage.setItem(KEY, JSON.stringify(todos));
   }, [todos]);
-  ///////////////////////////////////////////////////////////////////
-
-  const toggleTodo = (id) => {
-    const newTodos = [...todos];
-    const todo = newTodos.find((todo) => todo.id === id);
-    todo.completed = !todo.completed;
-    setTodos(newTodos);
-  };
-
-  const handleTodoAdd = (event) => {
-    const task = todoTaskRef.current.value;
-    if (task === "") return;
-
-    setTodos((prevTodos) => {
-      return [...prevTodos, { id: uuidv4(), task, completed: false }];
-    });
-
-    todoTaskRef.current.value = null;
-  };
-
-  const handleClearAll = () => {
-    const newTodos = todos.filter((todo) => !todo.completed);
-    setTodos(newTodos);
-  };
 
   return (
-    <Fragment>
-      <input ref={todoTaskRef} type="text" placeholder="Nueva tarea" />
-      <button onClick={handleTodoAdd}>Añadir</button>
-      <button onClick={handleClearAll}>Eliminar</button>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <div>
-        Te quedan {todos.filter((todo) => !todo.completed).length} tareas por
-        terminar
-      </div>
-    </Fragment>
+    <>
+      <AddTodo />
+      <TodoList todos={todos} />
+      <div>{todos.filter((todo) => !todo.completed).length} tasks left</div>
+    </>
   );
 }
