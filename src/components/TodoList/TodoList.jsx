@@ -88,7 +88,10 @@ export function TodoList({ todos }) {
         </AnimatePresence>
       </ul>
       <p className="grid__tasksleft" data-testid="todoCount">
-        {todos.filter((todo) => !todo.completed).length} tasks to finish! ✨
+        {todos.length === 0
+          ? "You have no tasks, yay! 🎉"
+          : todos.filter((todo) => !todo.completed).length +
+            " tasks to finish! ✨"}
       </p>
     </section>
   );

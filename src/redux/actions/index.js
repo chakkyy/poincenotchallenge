@@ -25,16 +25,13 @@ export const removeTodo = (id) => ({
   },
 });
 
-export const updateTodo = (id, item) => (
-  console.log(id, item),
-  {
-    type: UPDATE_TODO,
-    payload: {
-      id: id,
-      item: item,
-    },
-  }
-);
+export const updateTodo = (id, item) => ({
+  type: UPDATE_TODO,
+  payload: {
+    id: id,
+    item: item,
+  },
+});
 
 export const completeTodo = (id) => ({
   type: COMPLETE_TODO,

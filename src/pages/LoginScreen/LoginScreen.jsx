@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useForm } from "../../hooks/useForm";
 import users from "../../users";
+import "./LoginScreen.scss";
+import { motion } from "framer-motion";
 
 export const LoginScreen = ({ setIsLoggedIn, isLoggedIn }) => {
   let history = useHistory();
@@ -34,26 +36,53 @@ export const LoginScreen = ({ setIsLoggedIn, isLoggedIn }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLoginSubmit}>
-        <input
-          placeholder="Username"
-          autoComplete="off"
-          type="text"
-          name="username"
-          value={formValues.username}
-          onChange={handleInputChange}
-        />
-        <input
-          placeholder="Password"
-          autoComplete="off"
-          type="password"
-          name="password"
-          value={formValues.password}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Login</button>
+    <div className="login__container">
+      <form onSubmit={handleLoginSubmit} className="login__form">
+        <motion.h1
+          initial={{ y: -1000 }}
+          animate={{ y: 0 }}
+          transition={{ type: "spring", duration: 1 }}
+          className="form__title"
+        >
+          Welcome! 👋
+        </motion.h1>
+        <motion.div
+          initial={{ x: 500 }}
+          animate={{ x: 0 }}
+          transition={{ type: "spring", duration: 2 }}
+          className="login__inputs"
+        >
+          <label htmlFor="username">
+            <span>Username</span>
+            <input
+              autoComplete="off"
+              className="login__input"
+              type="text"
+              name="username"
+              value={formValues.username}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label htmlFor="password">
+            <span>Password</span>
+            <input
+              autoComplete="off"
+              className="login__input"
+              type="password"
+              name="password"
+              value={formValues.password}
+              onChange={handleInputChange}
+            />
+          </label>
+        </motion.div>
+        <button className="login__btn" type="submit">
+          Login
+        </button>
       </form>
+      <div className="login__info">
+        <p>Username: poincenot </p>
+        <p>Password: poincenot </p>
+      </div>
     </div>
   );
 };
