@@ -3,7 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { rootReducer } from "./redux/reducers";
 import { createStore } from "redux";
-import Root from "./App";
+import Home from "./App";
 
 //This is my very first time writing tests and I can't pass one test 🤣 because I think it's because of the way I'm testing the component.
 
@@ -11,18 +11,17 @@ describe("GIVEN a Redux store created from the rootReducer", () => {
   let store;
   beforeEach(() => {
     store = createStore(rootReducer);
+    localStorage.setItem("accessToken", "token");
   });
 
-  describe("WHEN this is passed to Root", () => {
-    let getByLabelText, getByText, container;
+  describe("WHEN this is passed to Home", () => {
+    let getByLabelText, container;
     beforeEach(() => {
-      ({ getByLabelText, getByText, container } = render(
-        <Root store={store} />
-      ));
+      ({ getByLabelText, container } = render(<Home store={store} />));
     });
 
     test("THEN there are no todos shown", () => {
-      expect(container).toHaveTextContent(/0 tasks/i);
+      expect(container).toHaveTextContent(/You have no tasks/i);
     });
 
     describe("AND when a todo is added", () => {
