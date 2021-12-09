@@ -49,6 +49,7 @@ export function TodoItem({ todo }) {
         transition: { duration: 0.5 },
       }}
       className="card__container"
+      data-testid="todo"
     >
       <textarea
         ref={inputRef}

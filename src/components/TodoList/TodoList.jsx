@@ -35,6 +35,7 @@ export function TodoList({ todos }) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setSort("completed")}
+            aria-label="active todos"
           >
             Completed
           </motion.button>
@@ -42,6 +43,7 @@ export function TodoList({ todos }) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setSort("uncompleted")}
+            aria-label="uncompleted todos"
           >
             Uncompleted
           </motion.button>
@@ -85,9 +87,9 @@ export function TodoList({ todos }) {
             : null}
         </AnimatePresence>
       </ul>
-      <div className="grid__tasksleft">
+      <p className="grid__tasksleft" data-testid="todoCount">
         {todos.filter((todo) => !todo.completed).length} tasks to finish! ✨
-      </div>
+      </p>
     </div>
   );
 }

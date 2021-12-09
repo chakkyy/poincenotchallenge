@@ -34,13 +34,16 @@ export function AddTodo() {
     <div className="addtodo__container">
       <form onSubmit={handleAddTodo}>
         <input
+          aria-label="Enter todo"
           value={input}
           className="addtodo__input"
           onChange={handleInputChange}
           type="text"
           placeholder="Add Todo..."
+          data-testid="input"
         />
         <motion.button
+          aria-label="add todo"
           type="submit"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

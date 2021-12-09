@@ -14,7 +14,7 @@ const initialState = {
   todos: storedTodos || [],
 };
 
-export const todoApp = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO: {
       const { id, text } = action.payload;
