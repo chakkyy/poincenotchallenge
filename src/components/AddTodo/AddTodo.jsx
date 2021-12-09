@@ -12,6 +12,7 @@ export function AddTodo() {
   const [input, setInput] = useState("");
 
   const handleAddTodo = (e) => {
+    e.preventDefault();
     if (input === "") {
       Swal.fire({
         icon: "error",
@@ -31,21 +32,23 @@ export function AddTodo() {
 
   return (
     <div className="addtodo__container">
-      <input
-        value={input}
-        className="addtodo__input"
-        onChange={handleInputChange}
-        type="text"
-        placeholder="Add Todo..."
-      />
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="addtodo__btn"
-        onClick={handleAddTodo}
-      >
-        <GoPlus />
-      </motion.button>
+      <form onSubmit={handleAddTodo}>
+        <input
+          value={input}
+          className="addtodo__input"
+          onChange={handleInputChange}
+          type="text"
+          placeholder="Add Todo..."
+        />
+        <motion.button
+          type="submit"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="addtodo__btn"
+        >
+          <GoPlus />
+        </motion.button>
+      </form>
       <br />
     </div>
   );

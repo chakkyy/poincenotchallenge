@@ -1,34 +1,58 @@
 import React, { useState } from "react";
 import { TodoItem } from "../TodoItem/TodoItem";
 import "./TodoList.scss";
+import { useDispatch } from "react-redux";
+import { clearCompleted } from "../../redux/actions";
 import { AnimatePresence, motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 export function TodoList({ todos }) {
   const [sort, setSort] = useState("all");
+  const dispatch = useDispatch();
+
+  const handleClearCompleted = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Your taks has been deleted",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    dispatch(clearCompleted());
+  };
 
   return (
     <div className="grid__main">
       <div className="grid__buttons">
+        <div className="grid__filters">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setSort("all")}
+          >
+            All
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setSort("completed")}
+          >
+            Completed
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setSort("uncompleted")}
+          >
+            Uncompleted
+          </motion.button>
+        </div>
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={() => setSort("all")}
+          onClick={handleClearCompleted}
+          className="btn__clearCompleted"
         >
-          All
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setSort("completed")}
-        >
-          Completed
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setSort("uncompleted")}
-        >
-          Uncompleted
+          Clear Completed
         </motion.button>
       </div>
       <ul>

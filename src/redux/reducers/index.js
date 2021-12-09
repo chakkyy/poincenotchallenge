@@ -4,6 +4,7 @@ import {
   REMOVE_TODO,
   RESET_LIST,
   COMPLETE_TODO,
+  CLEAR_COMPLETED,
 } from "../actions/actionTypes";
 import { KEY } from "../../constants";
 
@@ -23,11 +24,12 @@ export const todoApp = (state = initialState, action) => {
       };
     }
     case UPDATE_TODO: {
-      const { id, text } = action.payload;
+      console.log(action.payload);
+      const { id, item } = action.payload;
       return {
         ...state,
         todos: state.todos.map((todo) =>
-          todo.id === id ? { ...todo, text } : todo
+          todo.id === id ? { ...todo, text: item } : todo
         ),
       };
     }
@@ -45,6 +47,12 @@ export const todoApp = (state = initialState, action) => {
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== id),
+      };
+    }
+    case CLEAR_COMPLETED: {
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => !todo.completed),
       };
     }
     case RESET_LIST: {

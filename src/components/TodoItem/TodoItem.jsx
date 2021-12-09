@@ -25,7 +25,7 @@ export function TodoItem({ todo }) {
   const update = (id, value, e) => {
     if (e.which === 13) {
       //here 13 is key code for enter key
-      dispatch(updateTodo({ id, item: value }));
+      dispatch(updateTodo({ id, value }));
       localStorage.setItem(KEY, JSON.stringify(value));
       inputRef.current.disabled = true;
     }
@@ -47,7 +47,6 @@ export function TodoItem({ todo }) {
         x: "-60vw",
         scale: [1, 0],
         transition: { duration: 0.5 },
-        backgroundColor: "rgba(255,0,0,1)",
       }}
       className="card__container"
     >
