@@ -16,4 +16,4 @@ To run the project:
 
 ## Deploy
 
-Live on :
+Live on : https://todolist-chakkyy.vercel.app/
