@@ -4,13 +4,13 @@ import {
   TOGGLE_TODO,
   REMOVE_TODO,
   RESET_LIST,
+  COMPLETE_TODO,
 } from "../actions/actionTypes";
 import { KEY } from "../../constants";
 
 const storedTodos = JSON.parse(localStorage.getItem(KEY));
 
 const initialState = {
-  isEditing: true,
   todos: storedTodos || [],
 };
 
@@ -29,6 +29,15 @@ export const todoApp = (state = initialState, action) => {
         ...state,
         todos: state.todos.map((todo) =>
           todo.id === id ? { ...todo, text } : todo
+        ),
+      };
+    }
+    case COMPLETE_TODO: {
+      const { id } = action.payload;
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id === id ? { ...todo, completed: !todo.completed } : todo
         ),
       };
     }

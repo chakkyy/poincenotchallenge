@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { TodoItem } from "../TodoItem/TodoItem";
+import "./TodoList.scss";
 
 export function TodoList({ todos }) {
   const [sort, setSort] = useState("all");
 
   return (
-    <>
-      <button onClick={() => setSort("all")}>All</button>
-      <button onClick={() => setSort("completed")}>Completed</button>
-      <button onClick={() => setSort("uncompleted")}>Uncompleted</button>
+    <div className="grid__main">
+      <div className="grid__buttons">
+        <button onClick={() => setSort("all")}>All</button>
+        <button onClick={() => setSort("completed")}>Completed</button>
+        <button onClick={() => setSort("uncompleted")}>Uncompleted</button>
+      </div>
       <ul>
         {/* for uncompleted items */}
         {todos.length > 0 && sort === "uncompleted"
@@ -37,6 +40,9 @@ export function TodoList({ todos }) {
             })
           : null}
       </ul>
-    </>
+      <div className="grid__tasksleft">
+        {todos.filter((todo) => !todo.completed).length} tasks to finish! ✨
+      </div>
+    </div>
   );
 }

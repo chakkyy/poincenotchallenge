@@ -5,6 +5,7 @@ import {
   SET_FILTER,
   UPDATE_TODO,
   RESET_LIST,
+  COMPLETE_TODO,
 } from "./actionTypes";
 import { v4 as uuidv4 } from "uuid";
 
@@ -29,6 +30,13 @@ export const updateTodo = (id, item) => ({
   payload: {
     id: id,
     item: item,
+  },
+});
+
+export const completeTodo = (id) => ({
+  type: COMPLETE_TODO,
+  payload: {
+    id: id,
   },
 });
 

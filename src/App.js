@@ -17,7 +17,6 @@ export function App() {
       <Title />
       <AddTodo />
       <TodoList todos={todos} />
-      <div>{todos.filter((todo) => !todo.completed).length} tasks left</div>
     </>
   );
 }

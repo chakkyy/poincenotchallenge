@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { resetList } from "../../redux/actions";
+import "./Title.scss";
 
 export function Title() {
   const dispatch = useDispatch();
@@ -23,9 +24,11 @@ export function Title() {
     });
   };
   return (
-    <>
-      <h1>To-do List</h1>
-      <button onClick={handleResetList}>New List</button>
-    </>
+    <div className="title__container">
+      <h1 className="title__text">To-do List</h1>
+      <button onClick={handleResetList} className="newlist__btn">
+        New List
+      </button>
+    </div>
   );
 }
