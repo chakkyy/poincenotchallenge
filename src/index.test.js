@@ -3,7 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { rootReducer } from "./redux/reducers";
 import { createStore } from "redux";
-import Root from "./Root";
+import Root from "./App";
 
 //This is my very first time writing tests and I can't pass one test 🤣 because I think it's because of the way I'm testing the component.
 
