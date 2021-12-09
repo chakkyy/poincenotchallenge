@@ -1,25 +1,17 @@
 import React, { useRef } from "react";
-import {
-  toggleTodo,
-  removeTodo,
-  updateTodo,
-  completeTodo,
-} from "../../redux/actions";
+import { removeTodo, updateTodo, completeTodo } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { KEY } from "../../constants";
 import { AiFillEdit } from "react-icons/ai";
 import { IoCheckmarkDoneSharp, IoClose } from "react-icons/io5";
 import "./TodoItem.scss";
+import { motion } from "framer-motion";
 
 export function TodoItem({ todo }) {
   const { text, completed } = todo;
 
   const dispatch = useDispatch();
   const inputRef = useRef(true);
-
-  const toggleToDo = () => {
-    dispatch(toggleTodo(todo.id));
-  };
 
   const handleRemoveTodo = () => {
     dispatch(removeTodo(todo.id));
@@ -44,7 +36,21 @@ export function TodoItem({ todo }) {
   };
 
   return (
-    <li className="card__container">
+    <motion.li
+      initial={{ x: "150vw", transition: { type: "spring", duration: 2 } }}
+      animate={{ x: 0, transition: { type: "spring", duration: 2 } }}
+      whileHover={{
+        scale: 1.05,
+        transition: { type: "spring", duration: 0.1 },
+      }}
+      exit={{
+        x: "-60vw",
+        scale: [1, 0],
+        transition: { duration: 0.5 },
+        backgroundColor: "rgba(255,0,0,1)",
+      }}
+      className="card__container"
+    >
       <textarea
         ref={inputRef}
         disabled={inputRef}
@@ -52,26 +58,33 @@ export function TodoItem({ todo }) {
         onKeyPress={(e) => update(todo.id, inputRef.current.value, e)}
       />
       <div className="card__btnscontainer">
-        <button
+        <motion.button
           whileHover={{ scale: 1.4 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => changeFocus()}
         >
-          {""}
           <AiFillEdit />
-          {""}
-        </button>
+        </motion.button>
         {!completed && (
-          <button onClick={handleCompleteTodo} style={{ color: "green" }}>
+          <motion.button
+            whileHover={{ scale: 1.4 }}
+            whileTap={{ scale: 0.9 }}
+            style={{ color: "green" }}
+            onClick={handleCompleteTodo}
+          >
             <IoCheckmarkDoneSharp />
-          </button>
+          </motion.button>
         )}
-
-        <button onClick={handleRemoveTodo} style={{ color: "red" }}>
+        <motion.button
+          whileHover={{ scale: 1.4 }}
+          whileTap={{ scale: 0.9 }}
+          style={{ color: "red" }}
+          onClick={handleRemoveTodo}
+        >
           <IoClose />
-        </button>
+        </motion.button>
       </div>
       {todo.completed && <span className="card__completed">done✨</span>}
-    </li>
+    </motion.li>
   );
 }

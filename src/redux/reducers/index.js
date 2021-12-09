@@ -1,7 +1,6 @@
 import {
   ADD_TODO,
   UPDATE_TODO,
-  TOGGLE_TODO,
   REMOVE_TODO,
   RESET_LIST,
   COMPLETE_TODO,
@@ -52,15 +51,6 @@ export const todoApp = (state = initialState, action) => {
       return {
         ...state,
         todos: [],
-      };
-    }
-    case TOGGLE_TODO: {
-      const { id } = action.payload;
-      return {
-        ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === id ? { ...todo, completed: !todo.completed } : todo
-        ),
       };
     }
     default:

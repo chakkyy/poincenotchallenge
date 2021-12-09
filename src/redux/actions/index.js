@@ -1,7 +1,6 @@
 import {
   ADD_TODO,
   REMOVE_TODO,
-  TOGGLE_TODO,
   SET_FILTER,
   UPDATE_TODO,
   RESET_LIST,
@@ -38,11 +37,6 @@ export const completeTodo = (id) => ({
   payload: {
     id: id,
   },
-});
-
-export const toggleTodo = (id) => ({
-  type: TOGGLE_TODO,
-  payload: { id },
 });
 
 export const setFilter = (filter) => ({

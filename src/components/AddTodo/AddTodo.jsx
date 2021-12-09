@@ -4,6 +4,7 @@ import { GoPlus } from "react-icons/go";
 import { addTodo } from "../../redux/actions";
 import Swal from "sweetalert2";
 import "./AddTodo.scss";
+import { motion } from "framer-motion";
 
 export function AddTodo() {
   const dispatch = useDispatch();
@@ -37,9 +38,14 @@ export function AddTodo() {
         type="text"
         placeholder="Add Todo..."
       />
-      <button onClick={handleAddTodo} className="addtodo__btn">
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="addtodo__btn"
+        onClick={handleAddTodo}
+      >
         <GoPlus />
-      </button>
+      </motion.button>
       <br />
     </div>
   );

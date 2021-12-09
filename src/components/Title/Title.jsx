@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { resetList } from "../../redux/actions";
 import "./Title.scss";
+import { motion } from "framer-motion";
 
 export function Title() {
   const dispatch = useDispatch();
@@ -23,12 +24,18 @@ export function Title() {
       }
     });
   };
+
   return (
-    <div className="title__container">
+    <motion.div
+      initial={{ y: -200 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", duration: 0.5 }}
+      className="title__container"
+    >
       <h1 className="title__text">To-do List</h1>
       <button onClick={handleResetList} className="newlist__btn">
         New List
       </button>
-    </div>
+    </motion.div>
   );
 }
