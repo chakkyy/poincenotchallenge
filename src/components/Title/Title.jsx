@@ -26,7 +26,7 @@ export function Title() {
   };
 
   return (
-    <motion.div
+    <motion.nav
       initial={{ y: -200 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", duration: 0.5 }}
@@ -36,6 +36,6 @@ export function Title() {
       <button onClick={handleResetList} className="newlist__btn">
         New List
       </button>
-    </motion.div>
+    </motion.nav>
   );
 }

@@ -31,7 +31,7 @@ export function AddTodo() {
   };
 
   return (
-    <div className="addtodo__container">
+    <header className="addtodo__container">
       <form onSubmit={handleAddTodo}>
         <input
           aria-label="Enter todo"
@@ -53,6 +53,6 @@ export function AddTodo() {
         </motion.button>
       </form>
       <br />
-    </div>
+    </header>
   );
 }

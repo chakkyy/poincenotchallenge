@@ -16,14 +16,14 @@ export function App() {
   return (
     <>
       <Title />
-      <motion.div
+      <motion.main
         initial={{ y: 1000 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", duration: 1 }}
       >
         <AddTodo />
         <TodoList todos={todos} />
-      </motion.div>
+      </motion.main>
     </>
   );
 }

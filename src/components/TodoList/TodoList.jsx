@@ -21,7 +21,7 @@ export function TodoList({ todos }) {
   };
 
   return (
-    <div className="grid__main">
+    <section className="grid__main">
       <div className="grid__buttons">
         <div className="grid__filters">
           <motion.button
@@ -90,6 +90,6 @@ export function TodoList({ todos }) {
       <p className="grid__tasksleft" data-testid="todoCount">
         {todos.filter((todo) => !todo.completed).length} tasks to finish! ✨
       </p>
-    </div>
+    </section>
   );
 }

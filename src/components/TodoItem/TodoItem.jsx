@@ -36,7 +36,7 @@ export function TodoItem({ todo }) {
   };
 
   return (
-    <motion.li
+    <motion.article
       initial={{ x: "150vw", transition: { type: "spring", duration: 2 } }}
       animate={{ x: 0, transition: { type: "spring", duration: 2 } }}
       whileHover={{
@@ -85,6 +85,6 @@ export function TodoItem({ todo }) {
         </motion.button>
       </div>
       {todo.completed && <span className="card__completed">done✨</span>}
-    </motion.li>
+    </motion.article>
   );
 }
